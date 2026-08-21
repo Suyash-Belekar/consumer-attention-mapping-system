@@ -1,11 +1,5 @@
 # Consumer Attention Mapping System
-
-## Overview
-
-The Consumer Attention Mapping System is an AI-powered retail analytics platform that leverages computer vision and machine learning to analyze shopper behavior inside retail stores. It tracks customer movement, gaze direction, dwell time, and product interactions to generate actionable insights that help retailers optimize store layouts, improve product visibility, and increase sales.
-
-
-
+Welcome to **ConsumerAnalyticsSystem**, an enterprise-grade Computer Vision (CV) and Retail Intelligence engine designed to turn raw video feeds into real-time operational metrics, spatial heatmaps, customer dwell analysis, and gaze/attention tracking.
 
 ## Features
 
@@ -24,61 +18,77 @@ The Consumer Attention Mapping System is an AI-powered retail analytics platform
 
 # ConsumerAnalytics AI: Computer Vision & Retail Intelligence Platform
 
-Welcome to **ConsumerAnalytics AI**, an enterprise-grade Computer Vision (CV) and Retail Intelligence engine designed to turn raw video feeds into real-time operational metrics, spatial heatmaps, customer dwell analysis, and gaze/attention tracking.
+
 
 ---
 
-## 🌟 Overview & System Architecture
+##  System Architecture
 
 ConsumerAnalytics AI combines high-performance Python deep learning pipelines (FastAPI, OpenCV, MediaPipe, PyTorch/YOLO) with a reactive, component-driven React dashboard (Vite, TailwindCSS, Recharts).
+```text
+┌──────────────────────────────────────────────────────────────────┐
+│                         SYSTEM ARCHITECTURE                      │
+└──────────────────────────────────────────────────────────────────┘
 
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                                 SYSTEM OVERVIEW                                 │
-└─────────────────────────────────────────────────────────────────────────────────┘
+                        ┌──────────────────┐
+                        │ Retail IP Camera │
+                        └────────┬─────────┘
+                                 │ RTSP / Video Stream
+                                 ▼
+                 ┌────────────────────────────────┐
+                 │  Multi-Camera Stream Engine    │
+                 └───────────────┬────────────────┘
+                                 │ Raw Frames / Buffer
+                                 ▼
+                 ┌────────────────────────────────┐
+                 │    AI Vision Engine (Python)   │
+                 │ ────────────────────────────── │
+                 │ • Face Detection & Mesh        │
+                 │ • Head Pose & Gaze Vector      │
+                 │ • Person Detection & Tracking  │
+                 └───────────────┬────────────────┘
+                                 │ Bounding Boxes / Vectors / Tracks
+                                 ▼
+                 ┌────────────────────────────────┐
+                 │   Analytics & Domain Engine    │
+                 │ ────────────────────────────── │
+                 │ • Dwell Time Calculation       │
+                 │ • Attention Score & Heatmaps   │
+                 │ • Shelf & Zone (ROI) Mapping   │
+                 └───────────────┬────────────────┘
+                                 │ Aggregated Spatial Metrics
+                                 ▼
+                 ┌────────────────────────────────┐
+                 │     FastAPI Backend Server     │
+                 │ ────────────────────────────── │
+                 │ • RESTful Endpoints & Auth     │
+                 │ • Timeseries & Analytics Store │
+                 └───────────────┬────────────────┘
+                                 │ JSON (REST) / WebSockets (Live)
+                                 ▼
+                 ┌────────────────────────────────┐
+                 │   React / Vite Web Frontend    │
+                 │ ────────────────────────────── │
+                 │ • Live ROI Mapping Canvas      │
+                 │ • Spatial Traffic & Heatmaps   │
+                 │ • Attention & Dwell Dashboard  │
+                 └────────────────────────────────┘
+```
 
-┌────────────────────┐               RTSP Stream / Video Feed
-│ Retail IP Cameras  │ ─────────► [ Multi-Camera Stream Engine ]
-└────────────────────┘                         │
-                                               ▼
-                                            ┌──────────────────────────────┐
-                                            │  AI Vision Engine (Python)   │
-                                            │  • Face Detection & Mesh     │
-                                            │  • Head Pose & Gaze Vector   │
-                                            │  • Person Detection/Tracking │
-                                            └──────────────┬───────────────┘
-                                                           │
-                                                           ▼
-                                            ┌──────────────────────────────┐
-                                            │  Analytics & Domain Engine   │
-                                            │  • Dwell Time Calculation    │
-                                            │  • Attention Score & Heatmap │
-                                            │  • Shelf & Zone Mapping      │
-                                            └──────────────┬───────────────┘
-                                                           │
-                                                           ▼
-                                            ┌──────────────────────────────┐
-                                            │   FastAPI Backend Server     │
-                                            │   • RESTful APIs & Auth      │
-                                            │   • Analytics Repositories   │
-                                            └──────────────┬───────────────┘
-                                                           │
-                                                           ▼ JSON / WebSockets
-                                            ┌──────────────────────────────┐
-                                            │ React / Vite Web Frontend    │
-                                            │  • Live ROI Mapping Canvas   │
-                                            │  • Spatial Traffic & Heatmap │
-                                            │  • Attention & Dwell Dash    │
-                                            └──────────────────────────────┘
----
+----
 
 ## 🚀 Key Features 
 
-# Real-time Object Detection & Tracking:YOLO-based person and item tracking with multi-camera trajectory mapping .
-# Biometric Attention & Gaze Projection: 3D Head pose estimation, MediaPipe Face Mesh landmark extraction, and spatial gaze vector projection .
-# Dwell Time & Engagement Metrics: Granular dwell measurement per shelf, endcap, or custom ROI (Region of Interest) .
-# Interactive ROI Mapping Canvas: Drag-and-drop shelf, product, and camera mapping interface built for retail store layouts .
-# Heatmap & Traffic Analytics: Spatial visitor density mapping and pathing analytics .
-# Enterprise Modular Architecture: DDD (Domain-Driven Design) structure separating core CV algorithms, analytics domain, and API layers .
+1.Real-time Object Detection & Tracking:YOLO-based person and item tracking with multi-camera trajectory mapping .
+
+2.Biometric Attention & Gaze Projection: 3D Head pose estimation, MediaPipe Face Mesh landmark extraction, and spatial gaze vector projection.
+
+3.Dwell Time & Engagement Metrics: Granular dwell measurement per shelf, endcap, or custom ROI (Region of Interest).
+
+4.Interactive ROI Mapping Canvas: Drag-and-drop shelf, product, and camera mapping interface built for retail store layouts.
+
+5.Heatmap & Traffic Analytics: Spatial visitor density mapping and pathing analytics .
+6.Enterprise Modular Architecture: DDD (Domain-Driven Design) structure separating core CV algorithms, analytics domain, and API layers .
 
 ---
 
@@ -120,8 +130,9 @@ ConsumerAnalytics AI combines high-performance Python deep learning pipelines (F
 
 ## 🛠️ Technology Stack 
 
-# Backend & Vision Engine: Python 3.10+, FastAPI, Pydantic, SQLAlchemy, OpenCV, MediaPipe, PyTorch, PostgreSQL / SQLite .
-# Frontend Dashboard:** React 18, Vite, TailwindCSS, Lucide React, Recharts, HTML5 Canvas API .
+**Backend & Vision Engine**: Python 3.10+, FastAPI, Pydantic, SQLAlchemy, OpenCV, MediaPipe, PyTorch, PostgreSQL / SQLite .
+
+**Frontend Dashboard**: React 18, Vite, TailwindCSS, Lucide React, Recharts, HTML5 Canvas API .
 
 ---
 
