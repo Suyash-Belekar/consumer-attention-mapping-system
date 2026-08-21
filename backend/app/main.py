@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from __future__ import annotations
 
 import os
@@ -29,16 +30,34 @@ app = FastAPI(
     version="2.0.0",
     description="Production backend for camera mapping, shopper tracking, attention analytics and retail intelligence.",
     lifespan=lifespan,
+=======
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from app.core.database import Base, engine
+from app.api import auth, stores, analytics, intelligence, reports
+
+Base.metadata.create_all(bind=engine)
+
+app = FastAPI(
+    title="Consumer Attention Mapping System",
+    description="Milestone 3 - Behavioral Intelligence & Optimization",
+    version="0.3.0",
+>>>>>>> 6edf5a418e08325876c687f139cebc0504528764
 )
 
 app.add_middleware(
     CORSMiddleware,
+<<<<<<< HEAD
     allow_origins=settings.BACKEND_CORS_ORIGINS,
+=======
+    allow_origins=["http://localhost:3000", "http://localhost:3001"],
+>>>>>>> 6edf5a418e08325876c687f139cebc0504528764
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+<<<<<<< HEAD
 os.makedirs("static/heatmaps", exist_ok=True)
 os.makedirs("static/uploads/videos", exist_ok=True)
 os.makedirs("static/uploads/captures", exist_ok=True)
@@ -84,3 +103,20 @@ async def database_health_check():
     if row is None:
         return {"status": "healthy", "database": settings.POSTGRES_DB, "timescaledb": False}
     return {"status": "healthy", "database": row[0], "postgres_version": row[1], "timescaledb": True}
+=======
+app.include_router(auth.router)
+app.include_router(stores.router)
+app.include_router(analytics.router)
+app.include_router(intelligence.router)
+app.include_router(reports.router)
+
+
+@app.get("/")
+def root():
+    return {"message": "Consumer Attention Mapping System API is running"}
+
+
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
+>>>>>>> 6edf5a418e08325876c687f139cebc0504528764
