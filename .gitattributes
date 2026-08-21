@@ -1,0 +1,8 @@
+# Normalize all text files to CRLF on checkout
+* text eol=crlf
+
+# Keep binary files untouched
+*.png binary
+*.jpg binary
+*.zip binary
+*.pyc binary

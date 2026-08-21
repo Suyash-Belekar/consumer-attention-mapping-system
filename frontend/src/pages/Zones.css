@@ -1,0 +1,7 @@
+/* Page-specific styles for Zones. */
+/* Keep page-level layout and visual rules here. */
+/* Shared UI primitives belong in src/components/ui or global styles. */
+
+.zones-page {
+  width: 100%;
+}

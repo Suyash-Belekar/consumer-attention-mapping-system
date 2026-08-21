@@ -1,0 +1,22 @@
+/* =========================================================
+   Products Page
+   Page-specific layout only.
+   Shared components and design tokens remain global.
+   ========================================================= */
+
+.products-page {
+    width: 100%;
+    min-width: 0;
+}
+
+/* Prevent wide product tables/content from breaking the layout. */
+.products-page > * {
+    min-width: 0;
+}
+
+/* Responsive page spacing */
+@media (max-width: 768px) {
+    .products-page {
+        width: 100%;
+    }
+}

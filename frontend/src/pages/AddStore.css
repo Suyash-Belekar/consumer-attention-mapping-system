@@ -1,0 +1,95 @@
+/* ==========================================================
+   Add Store Page
+========================================================== */
+
+.add-store-page {
+    min-height: 100vh;
+    background: #f4f7fb;
+    padding: 2rem;
+}
+
+/* ==========================================================
+   Header
+========================================================== */
+
+.add-store-header {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-store-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.add-store-subtitle {
+    margin-top: 0.35rem;
+    color: #64748b;
+}
+
+/* ==========================================================
+   Card
+========================================================== */
+
+.add-store-card {
+    max-width: 800px;
+    margin: auto;
+
+    border-radius: 16px;
+
+    box-shadow: 0 12px 30px rgba(0,0,0,.06);
+}
+
+/* ==========================================================
+   Form
+========================================================== */
+
+.add-store-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.add-store-field {
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+}
+
+/* ==========================================================
+   Button
+========================================================== */
+
+.add-store-button {
+    width: 100%;
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media (max-width:768px){
+
+    .add-store-page{
+        padding:1rem;
+    }
+
+    .add-store-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:1rem;
+    }
+
+    .add-store-title{
+        font-size:1.7rem;
+    }
+
+}

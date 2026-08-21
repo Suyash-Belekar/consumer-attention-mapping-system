@@ -1,0 +1,1 @@
+.mapping-toolbar{display:flex;gap:6px;flex-wrap:wrap;padding:8px;border:1px solid #ddd;border-radius:9px;margin-bottom:10px}.mapping-toolbar button{border:0;background:transparent;padding:7px 10px;border-radius:6px;cursor:pointer}.mapping-toolbar button.active{box-shadow:0 0 0 1px currentColor inset;font-weight:600}.mapping-toolbar span{flex:1}

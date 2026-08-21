@@ -1,0 +1,7 @@
+/* Page-specific styles for Dashboard. */
+/* Keep page-level layout and visual rules here. */
+/* Shared UI primitives belong in src/components/ui or global styles. */
+
+.dashboard-page {
+  width: 100%;
+}

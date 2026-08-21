@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: timescale/timescaledb:latest-pg16
+    container_name: cams-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: consumer_analytics
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./app/models/schema.sql:/docker-entrypoint-initdb.d/001_schema.sql:ro
+    
+    healthcheck:
+      test: ["CMD-SHELL", 
+        "pg_isready -U postgres -d consumer_analytics"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cams-backend
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://postgres:postgrespassword@postgres:5432/consumer_analytics
+      SECRET_KEY: devsecret
+      DEV_AUTH_BYPASS: "true"
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app   # 🔥 live code mount (no rebuild needed)
+    command: >
+      uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+volumes:
+  postgres_data:

@@ -1,0 +1,1 @@
+.camera-grid{display:grid;gap:10px}.count-1{grid-template-columns:1fr}.count-2,.count-3,.count-4{grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:800px){.camera-grid{grid-template-columns:1fr!important}}

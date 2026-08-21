@@ -1,0 +1,4 @@
+import React from "react";
+import "./MappingSidebar.css";
+const SHELVES=[["shelf-a","Shelf A",3,8],["shelf-b","Shelf B",2,5]];
+export default function MappingSidebar({selectedShelf,onSelectShelf}){return <aside className="mapping-sidebar"><div className="mapping-sidebar-title"><div><strong>Store map</strong><small>Shelves and products</small></div><button>+</button></div>{SHELVES.map(([id,name,tiers,products])=><button key={id} className={selectedShelf===id?"mapping-node active":"mapping-node"} onClick={()=>onSelectShelf(id)}><b>▦</b><span><strong>{name}</strong><small>{tiers} tiers · {products} products</small></span></button>)}<div className="tracking-summary"><strong>Tracking coverage</strong><div className="coverage-bar"><span/></div><small>82% mapped products covered by active cameras.</small></div></aside>;}

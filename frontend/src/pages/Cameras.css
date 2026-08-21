@@ -1,0 +1,650 @@
+/* ==========================================================================
+   ROOT VARIABLES
+   ========================================================================== */
+:root {
+  /* Colors */
+  --camera-primary: #0f172a;
+  --camera-primary-hover: #1e293b;
+  --camera-text: #0f172a;
+  --camera-text-secondary: #475569;
+  --camera-text-muted: #64748b;
+  --camera-text-light: #94a3b8;
+  --camera-border: #e2e8f0;
+  --camera-border-focus: #94a3b8;
+  --camera-bg: #ffffff;
+  --camera-bg-subtle: #f8fafc;
+  --camera-bg-hover: #f1f5f9;
+  --camera-danger: #dc2626;
+  --camera-danger-hover: #b91c1c;
+  --camera-danger-border: #fecaca;
+  --camera-success: #16a34a;
+  --camera-success-bg: #f0fdf4;
+  --camera-error-bg: #fef2f2;
+  --camera-error-text: #b91c1c;
+  --camera-radius: 16px;
+  --camera-radius-sm: 9px;
+  --camera-radius-xs: 7px;
+  --camera-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --camera-transition: 0.15s ease;
+}
+
+/* ==========================================================================
+   PAGE CONTAINER
+   ========================================================================== */
+.cameras-page {
+  width: 100%;
+  padding-bottom: 30px;
+}
+
+/* ==========================================================================
+   GLOBAL ERROR
+   ========================================================================== */
+.camera-error {
+  margin: 12px 0;
+  padding: 10px 12px;
+  border: 1px solid var(--camera-danger-border);
+  border-radius: var(--camera-radius-sm);
+  background: var(--camera-error-bg);
+  color: var(--camera-error-text);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   CARDS (Register, List, Preview)
+   ========================================================================== */
+.camera-register,
+.camera-list {
+  width: 100%;
+  margin-top: 16px;
+  border: 1px solid var(--camera-border);
+  border-radius: var(--camera-radius);
+  background: var(--camera-bg);
+}
+
+/* ==========================================================================
+   REGISTRATION SECTION
+   ========================================================================== */
+.camera-register {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 24px;
+  padding: 20px;
+}
+
+.camera-register-header {
+  min-width: 0;
+}
+
+.camera-register-header > span,
+.camera-list-header > div > span,
+.camera-local-preview-header span {
+  display: block;
+  color: var(--camera-text-light);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+}
+
+.camera-register-header h2,
+.camera-list-header h2 {
+  margin: 5px 0 0;
+  color: var(--camera-text);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.camera-register-header p {
+  margin: 8px 0 0;
+  color: var(--camera-text-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ----- Form ----- */
+.camera-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  min-width: 0;
+}
+
+.camera-field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  color: var(--camera-text-muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.camera-field > span {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.camera-field em {
+  color: var(--camera-danger);
+  font-size: 11px;
+  font-style: normal;
+}
+
+.camera-field input,
+.camera-field select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  background: var(--camera-bg);
+  color: var(--camera-text);
+  padding: 9px 10px;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.4;
+  transition:
+    border-color var(--camera-transition),
+    box-shadow var(--camera-transition);
+}
+
+.camera-field input::placeholder {
+  color: var(--camera-text-light);
+}
+
+.camera-field input:focus,
+.camera-field select:focus {
+  border-color: var(--camera-border-focus);
+  box-shadow: 0 0 0 3px var(--camera-bg-hover);
+}
+
+.camera-field input:disabled,
+.camera-field select:disabled {
+  cursor: not-allowed;
+  background: var(--camera-bg-subtle);
+}
+
+/* ----- Upload area ----- */
+.camera-upload-wrapper {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+}
+
+.camera-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  background: var(--camera-bg-subtle);
+  color: var(--camera-text-muted);
+  cursor: pointer;
+  transition:
+    border-color var(--camera-transition),
+    background var(--camera-transition);
+}
+
+.camera-upload:hover {
+  border-color: var(--camera-border-focus);
+  background: var(--camera-bg-hover);
+}
+
+.camera-upload > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #334155;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.camera-upload input[type="file"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 7px;
+  border: 1px solid var(--camera-border);
+  border-radius: var(--camera-radius-xs);
+  background: var(--camera-bg);
+  color: var(--camera-text-secondary);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.camera-upload small {
+  display: block;
+  color: var(--camera-text-light);
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.camera-upload .camera-selected-file {
+  color: var(--camera-text-secondary);
+}
+
+.camera-selected-file strong {
+  color: var(--camera-text);
+  font-weight: 600;
+}
+
+/* ----- Submit button ----- */
+.camera-submit {
+  grid-column: 1 / -1;
+  width: fit-content;
+  min-width: 150px;
+  justify-content: center;
+  border: 0;
+  border-radius: 8px;
+  background: var(--camera-primary);
+  color: #ffffff;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background var(--camera-transition),
+    opacity var(--camera-transition),
+    transform var(--camera-transition);
+}
+
+.camera-submit:hover:not(:disabled) {
+  background: var(--camera-primary-hover);
+}
+
+.camera-submit:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.camera-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ==========================================================================
+   LOCAL VIDEO PREVIEW
+   ========================================================================== */
+.camera-local-preview {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 1px solid var(--camera-border);
+  border-radius: 14px;
+  background: var(--camera-bg);
+}
+
+.camera-local-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--camera-border);
+}
+
+.camera-local-preview-header > div {
+  min-width: 0;
+}
+
+.camera-local-preview-header h2 {
+  margin: 4px 0 4px;
+  color: var(--camera-text);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.camera-local-preview-header small {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  color: var(--camera-text-muted);
+  font-size: 11px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.camera-preview-live {
+  flex-shrink: 0;
+  padding: 5px 9px;
+  border: 1px solid #bbf7d0;
+  border-radius: 999px;
+  background: var(--camera-success-bg);
+  color: var(--camera-success) !important;
+  font-size: 9px !important;
+  font-weight: 700;
+  letter-spacing: 0.08em !important;
+}
+
+.camera-preview-container {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  overflow: hidden;
+  background: var(--camera-primary);
+}
+
+.camera-preview-video {
+  display: block;
+  width: 100%;
+  min-height: 300px;
+  max-height: 520px;
+  object-fit: contain;
+  background: var(--camera-primary);
+}
+
+.camera-preview-empty {
+  display: flex;
+  min-height: 300px;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 40px;
+  background: var(--camera-bg-subtle);
+  color: var(--camera-text-light);
+  text-align: center;
+}
+
+.camera-preview-empty svg {
+  margin-bottom: 4px;
+  color: var(--camera-text-light);
+}
+
+.camera-preview-empty strong {
+  color: var(--camera-text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.camera-preview-empty span {
+  max-width: 320px;
+  color: var(--camera-text-light);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.camera-preview-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 18px;
+  padding: 10px 18px;
+  border-top: 1px solid var(--camera-border);
+  background: var(--camera-bg-subtle);
+  color: var(--camera-text-muted);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   CAMERA LIST
+   ========================================================================== */
+.camera-list {
+  overflow: hidden;
+}
+
+.camera-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 15px 17px;
+  border-bottom: 1px solid var(--camera-border);
+}
+
+.camera-list-header h2 {
+  margin-top: 4px;
+}
+
+.camera-list-header > b {
+  display: grid;
+  min-width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--camera-bg-hover);
+  color: var(--camera-text-secondary);
+  font-size: 11px;
+}
+
+/* ----- Individual items ----- */
+.camera-list-items {
+  width: 100%;
+}
+
+.camera-item {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 90px auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 17px;
+  border-bottom: 1px solid var(--camera-bg-hover);
+}
+
+.camera-item:last-child {
+  border-bottom: 0;
+}
+
+.camera-icon {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: var(--camera-radius-sm);
+  background: var(--camera-bg-hover);
+  color: var(--camera-text-secondary);
+}
+
+.camera-details {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.camera-details strong {
+  overflow: hidden;
+  color: var(--camera-text);
+  font-size: 12px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.camera-details small {
+  overflow: hidden;
+  color: var(--camera-text-light);
+  font-size: 10px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ----- Status ----- */
+.camera-status {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.camera-status.ready {
+  color: var(--camera-success);
+}
+
+.camera-status.offline {
+  color: var(--camera-danger);
+}
+
+/* ----- Action buttons ----- */
+.camera-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.camera-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 30px;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--camera-radius-xs);
+  background: var(--camera-bg);
+  color: var(--camera-text-secondary);
+  padding: 6px 8px;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  transition:
+    border-color var(--camera-transition),
+    background var(--camera-transition),
+    color var(--camera-transition),
+    opacity var(--camera-transition);
+}
+
+.camera-actions button:hover:not(:disabled) {
+  border-color: var(--camera-border-focus);
+  background: var(--camera-bg-hover);
+  color: var(--camera-text);
+}
+
+.camera-actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.camera-actions .camera-delete {
+  border-color: var(--camera-danger-border);
+  color: var(--camera-danger);
+}
+
+.camera-actions .camera-delete:hover:not(:disabled) {
+  border-color: #fca5a5;
+  background: var(--camera-error-bg);
+  color: var(--camera-danger-hover);
+}
+
+/* ----- Empty state ----- */
+.camera-empty {
+  display: flex;
+  min-height: 100px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: var(--camera-text-light);
+  font-size: 12px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 900px) {
+  .camera-register {
+    grid-template-columns: 1fr;
+  }
+  .camera-register-header {
+    max-width: 650px;
+  }
+  .camera-item {
+    grid-template-columns: 40px minmax(0, 1fr) 80px auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .camera-register {
+    padding: 16px;
+  }
+  .camera-form {
+    grid-template-columns: 1fr;
+  }
+  .camera-upload-wrapper,
+  .camera-submit {
+    grid-column: auto;
+  }
+  .camera-local-preview-header {
+    align-items: flex-start;
+  }
+  .camera-preview-container,
+  .camera-preview-empty {
+    min-height: 220px;
+  }
+  .camera-preview-video {
+    min-height: 220px;
+  }
+  .camera-preview-meta {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .camera-item {
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 10px;
+    padding: 12px;
+  }
+  .camera-icon {
+    width: 32px;
+    height: 32px;
+  }
+  .camera-status {
+    grid-column: 2;
+  }
+  .camera-actions {
+    grid-column: 2;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .camera-actions button {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .cameras-page {
+    padding-bottom: 20px;
+  }
+  .camera-register,
+  .camera-list {
+    border-radius: 12px;
+  }
+  .camera-register {
+    gap: 18px;
+    padding: 14px;
+  }
+  .camera-register-header h2,
+  .camera-list-header h2 {
+    font-size: 16px;
+  }
+  .camera-local-preview-header {
+    padding: 13px 14px;
+  }
+  .camera-preview-container,
+  .camera-preview-empty {
+    min-height: 190px;
+  }
+  .camera-preview-video {
+    min-height: 190px;
+  }
+  .camera-actions {
+    gap: 5px;
+  }
+  .camera-actions button {
+    padding: 6px 7px;
+  }
+}
