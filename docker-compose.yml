@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/consumer_attention.db:/app/consumer_attention.db
+      - ./backend/app/static:/app/app/static
+    environment:
+      - DATABASE_URL=sqlite:///./consumer_attention.db
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
