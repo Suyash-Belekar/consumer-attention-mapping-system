@@ -4,6 +4,9 @@
 
 The Consumer Attention Mapping System is an AI-powered retail analytics platform that leverages computer vision and machine learning to analyze shopper behavior inside retail stores. It tracks customer movement, gaze direction, dwell time, and product interactions to generate actionable insights that help retailers optimize store layouts, improve product visibility, and increase sales.
 
+<img src="assets/" alt="App Preview" width="600" align="center">
+
+
 ## Features
 
 - Secure Authentication & Role-Based Access
